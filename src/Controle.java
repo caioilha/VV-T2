@@ -25,8 +25,10 @@ public class Controle {
 		return sensores[n].setH();
 	}
 
-	public boolean resetH(int n) {
-		return sensores[n].resetH();
+	public boolean resetH(int n) throws Exception{
+		if (valvulas[1] || valvulas[0])
+			throw new Exception();
+		else return sensores[n].resetH();
 	}
 
 	public void alerta(int n) {
@@ -46,14 +48,14 @@ public class Controle {
 	}
 
 	public void open(int n) throws Exception {
-		if (sensores[0].getH() && sensores[1].getH())
+		if (sensores[0].getH() && sensores[1].getH() && (!valvulas[n]))
 			valvulas[n] = true;
 		else
 			throw new Exception();
 	}
 
 	public void fecha(int n) throws Exception {
-		if (sensores[n].getAlerta())
+		if (valvulas[n])
 			valvulas[n] = false;
 		else
 			throw new Exception();

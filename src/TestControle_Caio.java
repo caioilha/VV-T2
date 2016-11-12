@@ -10,7 +10,6 @@ import org.junit.Test;
 public class TestControle_Caio {
 	private Controle c;
 
-
 	@Before
 	public void setUp() {
 		c = new Controle();
@@ -22,12 +21,16 @@ public class TestControle_Caio {
 	public void testSequence1() {
 		assertEquals(true, c.setH(1));
 		try {
-			c.open(1); 
+			c.open(0);
 			assertEquals(1, 0);
 		} catch (Exception e) {
 			assertEquals(1, 1);
 		}
-		assertEquals(false, c.resetH(1));
+		try {
+			assertEquals(true, c.resetH(1));
+		} catch (Exception e) {
+			assertEquals(1, 0); // deu ruim, basicamente
+		}
 
 	}
 
@@ -36,13 +39,13 @@ public class TestControle_Caio {
 	public void testSequence2() {
 		assertEquals(true, c.setH(0));
 		try {
-			c.open(2);
+			c.open(1);
 			assertEquals(1, 0);
 		} catch (Exception e) {
 			assertEquals(1, 1);
 		}
 		try {
-			c.open(1);
+			c.open(0);
 			assertEquals(1, 0);
 		} catch (Exception e) {
 			assertEquals(1, 1);
@@ -55,13 +58,13 @@ public class TestControle_Caio {
 	public void testSequence3() {
 		assertEquals(true, c.setH(0));
 		try {
-			c.open(1);
+			c.open(0);
 			assertEquals(1, 0);
 		} catch (Exception e) {
 			assertEquals(1, 1);
 		}
 		try {
-			c.open(1);
+			c.open(0);
 			assertEquals(1, 0);
 		} catch (Exception e) {
 			assertEquals(1, 1);
@@ -75,17 +78,24 @@ public class TestControle_Caio {
 		assertEquals(true, c.setH(1));
 		assertEquals(true, c.setH(0));
 		try {
-			c.open(2);
+			c.open(1);
 			assertEquals(1, 1);
 		} catch (Exception e) {
 			assertEquals(1, 0);
 		}
-		assertEquals(true, c.resetH(1));
+		// retorna erro
 		try {
-			c.open(1);
-			assertEquals(1, 0);
+			c.resetH(1);
+			assertEquals(0, 1);
 		} catch (Exception e) {
+			assertEquals(1, 1); // é pra dar erro
+		}
+
+		try {
+			c.open(0);
 			assertEquals(1, 1);
+		} catch (Exception e) {
+			assertEquals(1, 0);
 		}
 	}
 
@@ -96,12 +106,17 @@ public class TestControle_Caio {
 		assertEquals(true, c.setH(1));
 		assertEquals(true, c.setH(0));
 		try {
-			c.open(2);
+			c.open(1);
 			assertEquals(1, 1);
 		} catch (Exception e) {
 			assertEquals(1, 0);
 		}
-		assertEquals(true, c.resetH(1));
+		try {
+			c.resetH(1);
+			assertEquals(0, 1);
+		} catch (Exception e) {
+			assertEquals(1, 1); // é pra dar erro
+		}
 		assertEquals(false, c.setH(0));
 	}
 
@@ -112,17 +127,22 @@ public class TestControle_Caio {
 		assertEquals(true, c.setH(1));
 		assertEquals(true, c.setH(0));
 		try {
-			c.open(2);
+			c.open(1);
 			assertEquals(1, 1);
 		} catch (Exception e) {
 			assertEquals(1, 0);
 		}
-		assertEquals(true, c.resetH(0));
 		try {
-			c.open(1);
+			c.resetH(0);
 			assertEquals(0, 1);
 		} catch (Exception e) {
+			assertEquals(1, 1); // é pra dar erro
+		}
+		try {
+			c.open(0);
 			assertEquals(1, 1);
+		} catch (Exception e) {
+			assertEquals(0, 1);
 		}
 	}
 
@@ -133,13 +153,18 @@ public class TestControle_Caio {
 		assertEquals(true, c.setH(1));
 		assertEquals(true, c.setH(0));
 		try {
-			c.open(2);
+			c.open(1);
 			assertEquals(1, 1);
 		} catch (Exception e) {
 			assertEquals(1, 0);
 		}
-		assertEquals(true, c.resetH(0));
-		assertEquals(true, c.setH(0));
+		try {
+			c.resetH(0);
+			assertEquals(0, 1);
+		} catch (Exception e) {
+			assertEquals(1, 1); // é pra dar erro
+		}
+		assertEquals(false, c.setH(0));
 	}
 
 	// teste 8 Test Sequence 8 (195) : [setH(2), setH(1), open(2), resetH(1),
@@ -150,14 +175,19 @@ public class TestControle_Caio {
 		assertEquals(true, c.setH(1));
 		assertEquals(true, c.setH(0));
 		try {
-			c.open(2);
+			c.open(1);
 			assertEquals(1, 1);
 		} catch (Exception e) {
 			assertEquals(1, 0);
 		}
-		assertEquals(true, c.resetH(0));
 		try {
-			c.open(2);
+			c.resetH(0);
+			assertEquals(0, 1);
+		} catch (Exception e) {
+			assertEquals(1, 1); // é pra dar erro
+		}
+		try {
+			c.open(1);
 			assertEquals(1, 0);
 		} catch (Exception e) {
 			assertEquals(1, 1);
@@ -168,8 +198,16 @@ public class TestControle_Caio {
 	@Test
 	public void testSequence9() {
 		assertEquals(true, c.setH(1));
-		assertEquals(false, c.resetH(0));
-		assertEquals(true, c.resetH(1));
+		try {
+			assertEquals(false, c.resetH(0));
+		} catch (Exception e) {
+			assertEquals(1, 0); // não é para dar erro
+		}
+		try {
+			assertEquals(true, c.resetH(1));
+		} catch (Exception e) {
+			assertEquals(1, 0); // não é para dar erro
+		}
 	}
 
 	// teste 10 Test Sequence 10 (33) : [setH(2), resetH(1), setH(1)]
@@ -177,7 +215,11 @@ public class TestControle_Caio {
 	@Test
 	public void testSequence10() {
 		assertEquals(true, c.setH(1));
-		assertEquals(false, c.resetH(0));
+		try {
+			assertEquals(false, c.resetH(0));
+		} catch (Exception e) {
+			assertEquals(1, 0); // não é para dar erro
+		}
 		assertEquals(true, c.setH(0));
 	}
 }
