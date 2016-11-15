@@ -93,13 +93,15 @@ public class TestSensor_Vaccaro {
 	//teste 26
 	@Test
 	public void testSequence26(){
-		teste.setH();
-		teste.setAlerta();
-		teste.setH();
-		teste.resetH();
+		boolean resultSetH = teste.setH();
+		boolean resultSetAlerta = teste.setAlerta();
+		boolean resultSetH2 = teste.setH();
+		boolean resultResetH = teste.resetH();
 		
-		boolean test = teste.getH();
-		assertEquals(false, test);
+		assertEquals(true, resultSetH);
+		assertEquals(true, resultSetAlerta);
+		assertEquals(false, resultSetH2);
+		assertEquals(true, resultResetH);
 	}
 	
 	//teste 27
