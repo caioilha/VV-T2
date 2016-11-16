@@ -31,7 +31,7 @@ public class Sensor {
 
 	public void setR(float r) throws Exception {
 		if ((r > 1 || r < 0))
-			throw new Exception;
+			throw new Exception();
 		else
 			confiabilidade = r;
 
