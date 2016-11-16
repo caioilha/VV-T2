@@ -33,4 +33,11 @@ public class TestSensorFunc {
         teste.setR(2);
         assertEquals(true, teste.setAlerta()); 
     }
+    
+    @Test
+    public void testFunc3(){
+    	teste.setH();
+    	teste.setR(0);
+    	assertEquals(false, teste.setAlerta());
+    }
 }
