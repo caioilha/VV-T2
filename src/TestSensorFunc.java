@@ -18,23 +18,18 @@ public class TestSensorFunc {
         teste = c.getSensor();
     }
 
-    @Test
-    public void testFunc1() {//testando setAlerta com o r == 0;
-        assertEquals(true, teste.setH());
-        teste.setR(0);
-        assertEquals(false, teste.setAlerta()); 
-    }
+
     
     @Test
-    public void testFunc2() {//testando setAlerta com o r < 0;
-        assertEquals(true, teste.setH());
+    public void testFunc1() {//testando setAlerta com o r < 0;
+        teste.setH();
         teste.setR(-1);
         assertEquals(true, teste.setAlerta()); 
     }
     
     @Test
-    public void testFunc3() {//testando setAlerta com o r > 1;
-        assertEquals(true, teste.setH());
+    public void testFunc2() {//testando setAlerta com o r > 1;
+    	teste.setH();
         teste.setR(2);
         assertEquals(true, teste.setAlerta()); 
     }
