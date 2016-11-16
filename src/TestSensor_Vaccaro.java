@@ -24,7 +24,7 @@ public class TestSensor_Vaccaro {
 	
 	//teste 21
 	@Test
-	public void testSequence21(){
+	public void testSequence21(){ 
 		boolean resultSetH = teste.setH();
 		boolean resultSetAlerta = teste.setAlerta();
 		boolean resultGetH = teste.getH();
@@ -66,7 +66,7 @@ public class TestSensor_Vaccaro {
 	
 	//teste 24
 	@Test
-	public void testSequence24(){
+	public void testSequence24() throws Exception{
 		boolean resultSetH = teste.setH();
 		boolean resultSetAlerta = teste.setAlerta();
 		teste.setR(1);
@@ -79,7 +79,7 @@ public class TestSensor_Vaccaro {
 	
 	//teste 25
 	@Test
-	public void testSequence25(){
+	public void testSequence25() throws Exception{
 		boolean resultSetH = teste.setH();
 		boolean resultSetAlerta = teste.setAlerta();
 		teste.setR(1);

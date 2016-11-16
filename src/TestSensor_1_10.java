@@ -21,7 +21,7 @@ public class TestSensor_1_10 {
     //Test Sequence 1 :	[setR(float r), resetH()]
    
     @Test
-    public void testSequence1() {
+    public void testSequence1() throws Exception {
         teste.setR(0); //hmmmmmmm
         assertEquals(false, teste.resetH());
     }
@@ -87,7 +87,7 @@ public class TestSensor_1_10 {
 
     //Test Sequence 9 :	[setH(), setR(float r), resetH()]
     @Test
-    public void testSequence9() {
+    public void testSequence9() throws Exception{
         assertEquals(true, teste.setH());
         teste.setR(1);
         assertEquals(true, teste.resetH());
@@ -97,16 +97,9 @@ public class TestSensor_1_10 {
 
     //Test Sequence 10 :	[setH(), setR(float r), setAlerta()]
     @Test
-    public void testSequence10() {
+    public void testSequence10() throws Exception {
     	 assertEquals(true, teste.setH());
          teste.setR(1);
          assertEquals(true, teste.setAlerta()); 
-    }
-    
-    @Test
-    public void testSequence20_2() {//testando setAlerta com o r == 0;
-        assertEquals(true, teste.setH());
-        teste.setR(0);
-        assertEquals(false, teste.setAlerta()); 
     }
 }

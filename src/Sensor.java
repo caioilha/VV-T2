@@ -29,9 +29,9 @@ public class Sensor {
 		return true;
 	}
 
-	public void setR(float r) {
+	public void setR(float r) throws Exception {
 		if ((r > 1 || r < 0))
-			System.out.println("r precisa ser entre 0 e 1, não vou mudar nada :)");
+			throw new Exception;
 		else
 			confiabilidade = r;
 
