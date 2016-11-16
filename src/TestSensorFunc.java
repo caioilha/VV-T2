@@ -32,6 +32,7 @@ public class TestSensorFunc {
         assertEquals(true, teste.setAlerta()); 
     }
     
+    @Test
     public void testFunc3() {//testando setAlerta com o r > 1;
         assertEquals(true, teste.setH());
         teste.setR(2);
