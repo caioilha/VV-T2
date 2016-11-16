@@ -31,7 +31,7 @@ public class Sensor {
 
 	public void setR(float r) {
 		if ((r > 1 || r < 0))
-			System.out.println("r precisa ser entre 0 e 1");
+			System.out.println("r precisa ser entre 0 e 1, não vou mudar nada :)");
 		else
 			confiabilidade = r;
 
